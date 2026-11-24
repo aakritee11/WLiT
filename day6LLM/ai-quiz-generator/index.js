@@ -8,12 +8,12 @@ const ai = new GoogleGenAI({
     apiKey : process.env.GEMINI_API_KEY,
 })
 
-async function main (){
+async function main ( {topic,count , difficulty= "medium"}){
     const response = await ai.models.generateContent({
         model : 'gemini-3.1-flash-lite',
-        contents : "Give me 1 question on llm api integration",
+        contents : `Give me ${count} ${difficulty} questions on ${topic} `,
         config:{
-              temperature: 0.0,
+              temperature: 1.5,
             systemInstruction: "You are a helpful quiz generator. Create a mcq with 4 options based on the context. Questions should be clear ",
             responseMimeType: 'application/json',
             responseSchema:{
@@ -38,6 +38,8 @@ async function main (){
             }
         }
     })
+
+
     // console.log(response.text);
     const quiz = JSON.parse(response.text);
     quiz.questions.forEach((q,idx)=>{
@@ -55,4 +57,4 @@ async function main (){
 
 
 
-main();
+main("cricket",2,"easy");
