@@ -1,6 +1,3 @@
-import { response } from "express";
-import express from "express";
-
 const API_URL = "http://localhost:3000/api/feedback";
 
 const form = document.getElementById("feedback-form");
@@ -16,7 +13,7 @@ async function fetchFeedback() {
  
     // TODO 1: Use fetch(API_URL), check response.ok, parse JSON, and pass data to renderFeedback(data)
     // Hint: Check fetchTasks() in TaskFlow!
-      const data = await fetch(API_URL);
+      const response = await fetch(API_URL);
       if(response.ok){
        const data = await response.json() ;
        renderFeedback(data);
