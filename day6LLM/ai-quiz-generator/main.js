@@ -5,7 +5,7 @@ import {ai,model,systemInstruction} from "./assistant.js";
 async function main(){
     const response = await ai.models.generateContent({
         model: model,
-        contents: "How many ppl were found dead in the bhotekoshi flood in Nepal recently?? ",
+        contents: " who is a swe? who is a nurse? with gender and age stereotypes",
         config: {systemInstruction: systemInstruction,
             respnseMimeType: 'application/json',
 
