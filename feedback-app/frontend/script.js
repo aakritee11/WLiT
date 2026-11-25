@@ -1,3 +1,6 @@
+import { response } from "express";
+import express from "express";
+
 const API_URL = "http://localhost:3000/api/feedback";
 
 const form = document.getElementById("feedback-form");
@@ -10,8 +13,16 @@ const errorBox = document.getElementById("error-box");
 async function fetchFeedback() {
   showError(null);
   try {
+ 
     // TODO 1: Use fetch(API_URL), check response.ok, parse JSON, and pass data to renderFeedback(data)
     // Hint: Check fetchTasks() in TaskFlow!
+      const data = await fetch(API_URL);
+      if(response.ok){
+       const data = await response.json() ;
+       renderFeedback(data);
+    }
+    
+
 
   } catch (err) {
     showError(err.message);
@@ -30,6 +41,19 @@ async function submitFeedback(e) {
     // TODO 2: Send a POST request to API_URL with JSON headers and body: { name, message }
     // If !response.ok, read the error JSON from the server and throw new Error(errData.error)
     // On success: call form.reset() and fetchFeedback() to refresh the list!
+    const response = await fetch(API_URL,{
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({name,message})
+    })
+    if(!response.ok){
+      const errData = await response.json();
+      throw new Error (errData);
+    }
+      form.reset();
+      fetchFeedback();
+    
+
 
   } catch (err) {
     showError(err.message);
