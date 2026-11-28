@@ -8,4 +8,4 @@ export const ai = new GoogleGenAI({
 
 export const model = 'gemini-3.5-flash-lite'
 
-export const systemInstruction = ``;
+export const systemInstruction = `Be accurate and clear, do not invent facts, If unsure, say no, donot present guesses as facts, you are not a substitute for qualified professional advice`;

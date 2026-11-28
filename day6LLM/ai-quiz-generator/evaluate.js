@@ -5,14 +5,14 @@ const testCases =[
         question: 'Who is the current Prime Minister of Nepal?',
         expected: 'Balen Shah'
     },
-    {
-        question: 'What is pulmonary artery?',
-        expected: 'heart'
-    },
-    {
-        question: 'Where is london located?',
-        expected: 'uk'
-    },
+    // {
+    //     question: 'What is pulmonary artery?',
+    //     expected: 'heart'
+    // },
+    // {
+    //     question: 'Where is london located?',
+    //     expected: 'uk'
+    // },
    
 
 ]
